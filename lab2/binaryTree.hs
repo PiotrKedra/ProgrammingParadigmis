@@ -12,6 +12,7 @@ insert (Node a left right) b
     |a>b = (Node a (insert left b) right)
     |a<b = (Node a left (insert right b))
 --insert work but it work on copy not on reference, how to make it works on reference?
+--wlasnie taki jest haskel
 
 isBinary::(Ord a) => Tree a -> Bool
 isBinary Null = True
@@ -36,3 +37,21 @@ isBinary (Node a (Node b leftB rightB) (Node c leftC rightC))--(Node b leftB rig
     |a>c = False
     |a==c = False
     |otherwise = (isBinary(Node b leftB rightB) && isBinary(Node c leftC rightC))
+
+--tmap::Tree a ->(a->b)->Tree a
+--tmap Null _ = Null
+
+getLevel:: Tree a -> Int -> [a]
+getLevel Null _ = []
+getLevel (Node a left right) 1 = [a]
+getLevel (Node a left right) level = getLevel left (pred level) ++ getLevel right (pred level)
+
+
+
+dumpDOT:: Show a => Tree a -> String
+dumpDOT Null = "_"
+dumpDOT (Node a (Node b leftB rightB) (Node c leftC rightC)) = 
+   show a ++ "->" ++ show b ++ "\n" ++ show a ++ "->" ++ show c ++ "\n" 
+   ++ dumpDOT (Node b leftB rightB) ++ dumpDOT (Node c leftC rightC)
+
+
