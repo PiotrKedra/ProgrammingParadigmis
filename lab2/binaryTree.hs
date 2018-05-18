@@ -47,11 +47,11 @@ getLevel (Node a left right) 1 = [a]
 getLevel (Node a left right) level = getLevel left (pred level) ++ getLevel right (pred level)
 
 
-
+--it works but i dont kwno how to put single bracket
 dumpDOT:: Show a => Tree a -> String
-dumpDOT Null = "_"
-dumpDOT (Node a (Node b leftB rightB) (Node c leftC rightC)) = 
+dumpDOT (Node a Null Null) = show a ++ "->_/n" ++ show a ++ "->_/n"
+dumpDOT (Node a left@(Node b leftB rightB) right@(Node c leftC rightC)) = 
    show a ++ "->" ++ show b ++ "\n" ++ show a ++ "->" ++ show c ++ "\n" 
-   ++ dumpDOT (Node b leftB rightB) ++ dumpDOT (Node c leftC rightC)
+   ++ dumpDOT left ++ dumpDOT right
 
 
