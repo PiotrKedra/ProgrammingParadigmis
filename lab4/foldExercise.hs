@@ -32,3 +32,4 @@ flast:: [a] -> a
 flast list = foldl (\_ x -> x) undefined list
 
 --liczenie wystapien wyrazow w liscie(moze na kolosie> xd) trza zrobic
+--test git 2
