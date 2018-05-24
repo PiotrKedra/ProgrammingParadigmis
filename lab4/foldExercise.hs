@@ -31,4 +31,4 @@ fhead list = foldr (\x _ -> x) undefined list
 flast:: [a] -> a
 flast list = foldl (\_ x -> x) undefined list
 
---liczenie wystapien wyrazow w liscie(moze na kolosie> xd)
+--liczenie wystapien wyrazow w liscie(moze na kolosie> xd) trza zrobic
